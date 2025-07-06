@@ -49,6 +49,7 @@ void Jsnsr04tComponent::check_buffer_() {
       this->publish_state(meters);
     } else {
       ESP_LOGW(TAG, "Invalid data read from sensor: %s", format_hex_pretty(this->buffer_).c_str());
+      this->publish_state(NAN);
     }
   } else {
     ESP_LOGW(TAG, "checksum failed: %02x != %02x", checksum, this->buffer_[3]);
